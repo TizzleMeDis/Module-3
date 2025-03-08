@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 data.types[0].type.name == "normal" ? pokeContainerColor = 'light' : appendStyles(pokemonContainer, data.types[0].type.name) // determine background color for pokemon type
                 pokemonStats.innerHTML = "<label class='mt-2'>Stats: </label>"
                 for(let i = 0; i < data.stats.length; i++)
-                    pokemonStats.innerHTML += `<div class="m-0 p-0">${data.stats[i].stat.name}: ${data.stats[i].base_stat}</div>`
+                    pokemonStats.innerHTML += `<div class="m-0 p-0 font-large">${data.stats[i].stat.name}: ${data.stats[i].base_stat}</div>`
                     
                 pokemonType.innerHTML = `<label class="mt-2">Type: ${data.types[0].type.name}</label>`
-                pokemonContainer.classList = `container d-flex flex-row justify-content-around m-4 p-2 bg-${pokeContainerColor} m-4 w-75`
+                pokemonContainer.classList = `container d-flex flex-row justify-content-around align-items-center m-4 p-2 bg-${pokeContainerColor} m-4 w-75 rounded shadow`
                 pokemonContainer.innerHTML = ""
                 pokemonPicture.classList = "w-50"
 
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 pokemonContainer.appendChild(pokemonInfo)
             } catch(error) {
                 clearStyles(pokemonContainer)
+                alert(`Oh no! Can't find the pokemon ${pokemonInput.value}..`)
                 throw new Error(`Seems to be an error...\n${error}`)
             }
         } 
